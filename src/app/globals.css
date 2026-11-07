@@ -68,3 +68,153 @@
     color: var(--color-maroon);
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Home hero animations (src/components/home/hero.tsx)                 */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .hero-word {
+    display: inline-block;
+    margin-inline: 0.12em;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(12px);
+    animation: hero-word-appear 0.8s ease-out forwards;
+    transition: text-shadow 0.3s ease;
+  }
+  .hero-word:hover {
+    text-shadow: 0 0 20px color-mix(in srgb, var(--color-gold) 45%, transparent);
+  }
+
+  .hero-fade {
+    opacity: 0;
+    animation: hero-fade-in 1s ease-out forwards;
+  }
+
+  .hero-grid-line {
+    stroke: var(--color-gold);
+    stroke-width: 0.5;
+    stroke-dasharray: 5 5;
+    stroke-dashoffset: 1000;
+    opacity: 0;
+    animation: hero-grid-draw 2s ease-out forwards;
+  }
+  .hero-grid-line-faint {
+    --hero-line-opacity: 0.06;
+  }
+
+  .hero-dot {
+    fill: var(--color-gold);
+    opacity: 0;
+    animation: hero-dot-pulse 3s ease-in-out infinite;
+  }
+
+  .hero-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: color-mix(in srgb, var(--color-gold) 30%, transparent);
+    opacity: 0;
+    animation: hero-fade-in 1s ease-out forwards;
+  }
+
+  .hero-float {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--color-gold);
+    opacity: 0.25;
+    animation: hero-float 4s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  .hero-ripple {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-gold) 60%, transparent);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 50;
+    animation: hero-ripple 1s ease-out forwards;
+  }
+}
+
+@keyframes hero-word-appear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@keyframes hero-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hero-grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: calc(var(--hero-line-opacity, 0.15) * 2);
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: var(--hero-line-opacity, 0.15);
+  }
+}
+@keyframes hero-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(6px, -12px);
+    opacity: 0.6;
+  }
+}
+@keyframes hero-ripple {
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-fade,
+  .hero-corner,
+  .hero-grid-line,
+  .hero-dot,
+  .hero-float {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .hero-grid-line {
+    opacity: var(--hero-line-opacity, 0.15);
+  }
+  .hero-dot,
+  .hero-float {
+    opacity: 0.4;
+  }
+  .hero-ripple {
+    display: none;
+  }
+}
