@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Human Signal design tokens.
+ *
+ * The default Tailwind palette is cleared so only brand colors exist as
+ * utilities (bg-maroon, text-gold, border-line, ...). Anything off-brand
+ * (zinc, slate, red-500, ...) will simply not compile into a class.
+ *
+ * Surface -> accent rule: gold on dark, maroon on light. Always.
+ *   Light (white, card, maroon-tint): text black/body, accent + CTA maroon
+ *   Dark  (black, maroon):            text white,      accent + CTA gold
+ */
+@theme {
+  --color-*: initial;
+
+  /* Primary */
+  --color-maroon: #8c1d40; /* Dominant brand color. Buttons, headlines, accents on light. */
+  --color-gold: #ffc627; /* Single accent. CTAs on dark, active states, highlights. */
+  --color-black: #191919; /* Dark surfaces, footers, primary text. */
+  --color-white: #fafafa; /* Page background, text on dark surfaces. */
+  --color-maroon-deep: #5e1230; /* Hover/pressed state for maroon buttons. */
+  --color-maroon-tint: #f7eef1; /* Light tinted section backgrounds. */
+  --color-card: #ffffff; /* Raised card surface (lifts off the #fafafa page). */
+  --color-line: #e6e1e3; /* Hairlines and borders on light surfaces. */
+
+  /* Secondary: use sparingly, only when adding meaning. Never dominant or decorative. */
+  --color-green: #78be20; /* Positive / proof / success data */
+  --color-blue: #00a3e0; /* Informational / sequential step */
+  --color-orange: #ff7f32; /* Caution / attention metric */
+  --color-turquoise: #4ab7c4; /* Sequential step / data series */
+  --color-pink: #e74973; /* Sequential step / data series */
+  --color-gray: #747474; /* Quiet metadata, muted labels */
+
+  /* Grayscale: 7 steps, black -> white */
+  --color-neutral-900: #191919;
+  --color-neutral-800: #3d3d3d;
+  --color-neutral-700: #616161;
+  --color-neutral-600: #858585;
+  --color-neutral-500: #a8a8a8;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-50: #fafafa;
+
+  /* Semantic text aliases */
+  --color-ink: #191919; /* Primary text on light */
+  --color-body: #3d3d3d; /* Body copy on white */
+  --color-muted: #616161; /* Muted labels */
+
+  /* Typography */
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background-color: var(--color-white);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-maroon) 10%, transparent);
+    color: var(--color-maroon);
+  }
 }
