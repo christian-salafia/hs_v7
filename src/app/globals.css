@@ -123,7 +123,7 @@
 @layer components {
   .hero-word {
     display: inline-block;
-    margin-inline: 0.12em;
+    margin-inline: 0.02em;
     opacity: 0;
     filter: blur(8px);
     transform: translateY(12px);
@@ -159,11 +159,17 @@
 
   .hero-corner {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     border-color: color-mix(in srgb, var(--color-gold) 30%, transparent);
     opacity: 0;
     animation: hero-fade-in 1s ease-out forwards;
+  }
+  @media (width >= 48rem) {
+    .hero-corner {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .hero-float {

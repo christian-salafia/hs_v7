@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 
 /*
  * Home hero. Dark surface, so per the brand rule: white text, gold accent.
@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
  * computed from each line's start time and step.
  */
 
-const topTagline = "Welcome to StackPilot — Powering your digital transformation.";
+const topTagline = "Welcome to The Human Signal — Powering your AI Adoption.";
 const headline = "Supercharge your productivity with AI-driven automation.";
 const subheadline =
   "Integrate, orchestrate, and scale your business — all in one secure platform.";
@@ -24,14 +24,18 @@ function Words({
   start: number;
   step: number;
 }) {
-  return text.split(" ").map((word, i) => (
-    <span
-      key={i}
-      className="hero-word"
-      style={{ animationDelay: `${start + i * step}ms` }}
-    >
-      {word}
-    </span>
+  // A real space between words keeps the text readable when copied or
+  // read by a screen reader; each word animates in its own span.
+  return text.split(" ").map((word, i, words) => (
+    <Fragment key={i}>
+      <span
+        className="hero-word"
+        style={{ animationDelay: `${start + i * step}ms` }}
+      >
+        {word}
+      </span>
+      {i < words.length - 1 && " "}
+    </Fragment>
   ));
 }
 
@@ -124,10 +128,10 @@ export function Hero() {
       </svg>
 
       {/* Corner marks */}
-      <div className="hero-corner top-8 left-8 border-t border-l" style={{ animationDelay: "4s" }} />
-      <div className="hero-corner top-8 right-8 border-t border-r" style={{ animationDelay: "4.2s" }} />
-      <div className="hero-corner bottom-8 left-8 border-b border-l" style={{ animationDelay: "4.4s" }} />
-      <div className="hero-corner bottom-8 right-8 border-b border-r" style={{ animationDelay: "4.6s" }} />
+      <div className="hero-corner top-4 left-4 md:top-8 md:left-8 border-t border-l" style={{ animationDelay: "4s" }} />
+      <div className="hero-corner top-4 right-4 md:top-8 md:right-8 border-t border-r" style={{ animationDelay: "4.2s" }} />
+      <div className="hero-corner bottom-4 left-4 md:bottom-8 md:left-8 border-b border-l" style={{ animationDelay: "4.4s" }} />
+      <div className="hero-corner bottom-4 right-4 md:bottom-8 md:right-8 border-b border-r" style={{ animationDelay: "4.6s" }} />
 
       {/* Floating particles (start on first scroll) */}
       <div className="hero-float" style={{ top: "25%", left: "15%", animationDelay: "5s" }} />
@@ -149,7 +153,7 @@ export function Hero() {
           <h1 className="font-serif text-4xl font-light leading-tight tracking-tight text-white md:text-6xl lg:text-7xl">
             <span className="mb-4 block md:mb-6">
               <Words text={headline} start={1600} step={150} />
-            </span>
+            </span>{" "}
             <span className="block font-sans text-xl font-light leading-relaxed text-white/70 md:text-2xl lg:text-3xl">
               <Words text={subheadline} start={2600} step={150} />
             </span>
