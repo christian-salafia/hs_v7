@@ -5,7 +5,7 @@ import { GridVignetteBackground } from "@/components/ui/grid-vignette-background
 import { useReveal } from "@/lib/use-reveal";
 
 /*
- * Literacy survey band. Dark (maroon) surface, so per the brand rule:
+ * Literacy survey band. Dark (black) surface, so per the brand rule:
  * white text, gold accent, gold CTA.
  */
 
@@ -19,10 +19,10 @@ export function LiteracyBand() {
     <section
       id="literacy"
       ref={sectionRef}
-      className="relative isolate w-full overflow-hidden bg-maroon text-white"
+      className="relative isolate w-full overflow-hidden bg-black text-white"
     >
       <GridVignetteBackground
-        className="-z-10 text-white/10"
+        className="-z-10 text-gold/20"
         size={48}
         x={70}
         horizontalVignetteSize={60}
@@ -31,7 +31,7 @@ export function LiteracyBand() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-br from-transparent via-transparent to-maroon-deep/70"
+        className="absolute inset-0 -z-10 bg-linear-to-br from-transparent via-transparent to-maroon/25"
       />
 
       <div className="reveal mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-20 md:flex-row md:items-center md:justify-between md:gap-16 md:px-10 md:py-24">
