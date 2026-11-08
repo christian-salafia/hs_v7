@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Geist, Geist_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-white text-ink font-sans antialiased selection:bg-maroon/10 selection:text-maroon">
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
