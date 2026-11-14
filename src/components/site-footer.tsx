@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Command } from "lucide-react";
 
 import { GridVignetteBackground } from "@/components/ui/grid-vignette-background";
+import { HsMark } from "@/components/ui/hs-mark";
 import { SubscribeForm } from "./footer-1-utils/subscribe-form";
 import { NavLinks, type FooterSection } from "./footer-1-utils/nav-links";
 import { CurrentYear } from "./footer-1-utils/current-year";
@@ -70,10 +70,10 @@ export function SiteFooter() {
           <div className="space-y-6 xl:w-1/3 xl:max-w-sm">
             <Link
               href="#"
-              className="flex w-fit items-center gap-2 rounded-sm text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="flex w-fit items-center gap-3 rounded-sm text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
             >
-              <Command className="text-gold" aria-hidden="true" />
-              <span className="font-serif text-2xl">Acme Inc.</span>
+              <HsMark className="h-10 w-10 rounded-lg border border-white/10" />
+              <span className="font-serif text-2xl">Human Signal</span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white/70">
               Streamline workflows, ship faster, and stay ahead with AI.
@@ -89,7 +89,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-8 md:flex-row md:justify-between">
           <p className="font-mono text-xs text-white/60">
-            &copy; <CurrentYear /> Acme Inc. All rights reserved.
+            &copy; <CurrentYear /> Human Signal. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="#" className={smallLink}>
