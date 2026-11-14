@@ -12,8 +12,7 @@ const topTagline = "Welcome to The Human Signal — Powering your AI Adoption.";
 const headline = "The AI works. The rollout doesn’t.";
 const subheadline =
   "“ROI”: Pushed from the top. Ignored on the floor. Sound familiar?";
-const bottomTagline =
-  "Real-time analytics, seamless integrations, enterprise-grade security.";
+const bottomTagline = "AI adoption, from the floor up.";
 
 function Words({
   text,
