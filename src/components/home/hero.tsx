@@ -9,9 +9,9 @@ import { Fragment, useEffect, useRef } from "react";
  */
 
 const topTagline = "Welcome to The Human Signal — Powering your AI Adoption.";
-const headline = "Supercharge your productivity with AI-driven automation.";
+const headline = "The AI works. The rollout doesn’t.";
 const subheadline =
-  "Integrate, orchestrate, and scale your business — all in one secure platform.";
+  "“ROI”: Pushed from the top. Ignored on the floor. Sound familiar?";
 const bottomTagline =
   "Real-time analytics, seamless integrations, enterprise-grade security.";
 
